@@ -72,7 +72,7 @@ fpvae_group.add_argument("--fp16-vae", action="store_true", help="Run the VAE in
 fpvae_group.add_argument("--fp32-vae", action="store_true", help="Run the VAE in full precision fp32.")
 fpvae_group.add_argument("--bf16-vae", action="store_true", help="Run the VAE in bf16.")
 
-parser.add_argument("--cpu-vae", action="store_true", help="Run the VAE on the CPU.")
+parser.add_argument("--cpu-vae", default=True, action="store_true", help="Run the VAE on the CPU.")
 
 fpte_group = parser.add_mutually_exclusive_group()
 fpte_group.add_argument("--fp8_e4m3fn-text-enc", action="store_true", help="Store text encoder weights in fp8 (e4m3fn variant).")
@@ -120,7 +120,7 @@ vram_group.add_argument("--highvram", action="store_true", help="By default mode
 vram_group.add_argument("--normalvram", action="store_true", help="Used to force normal vram use if lowvram gets automatically enabled.")
 vram_group.add_argument("--lowvram", action="store_true", help="Split the unet in parts to use less vram.")
 vram_group.add_argument("--novram", action="store_true", help="When lowvram isn't enough.")
-vram_group.add_argument("--cpu", action="store_true", help="To use the CPU for everything (slow).")
+vram_group.add_argument("--cpu", default=True, action="store_true", help="To use the CPU for everything (slow).")
 
 parser.add_argument("--reserve-vram", type=float, default=None, help="Set the amount of vram in GB you want to reserve for use by your OS/other software. By default some amount is reserved depending on your OS.")
 
